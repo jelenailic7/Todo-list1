@@ -11,12 +11,14 @@
 
 <script>
   import { authService } from '../services/AuthService'
+
   export default {
     data() {
       return {
         email: '',
         password: ''
       }
+      // isAuthenticated: false
     },
     methods: {
       login() {
@@ -24,7 +26,10 @@
           .then(() => {
             this.$router.push({ name: 'todos' })
           })
+          // this.isAuthenticated = this.$auth.isAuthenticated();
       }
     }
   }
+  
+  
 </script>

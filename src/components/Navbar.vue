@@ -1,13 +1,15 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <router-link class="navbar-brand" to="/todos">Todo list</router-link>
-    <div class="navbar-nav">
-      <router-link class="nav-item nav-link" to="/todos">Todo list</router-link>
-      <router-link class="nav-item nav-link" to="/login" v-if="!isAuthenticated">Login</router-link>
-      <a href="#" class="nav-item nav-link" @click="logout" v-if="isAuthenticated">Logout</a>
-    </div>
-  </nav>
+  <div>
+    <b-navbar type="dark" variant="primary">
+        <b-navbar-nav>
+          <b-nav-item href="/todos" v-if="isAuthenticated">Todo list</b-nav-item>
+          <b-nav-item href="/login" v-if="!isAuthenticated">Login</b-nav-item>
+          <b-nav-item href="#" @click="logout" v-if="isAuthenticated">Logout</b-nav-item>
+        </b-navbar-nav>
+    </b-navbar>
+  </div>
 </template>
+
 
 <script>
   import { authService } from '../services/AuthService'
@@ -20,7 +22,9 @@
     methods: {
       logout() {
         authService.logout()
-        this.isAuthenticated = false
+         this.isAuthenticated = false
+        this.$router.push({ name: 'login' })
+
       }
     }
   }

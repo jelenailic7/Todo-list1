@@ -17,7 +17,8 @@ const routes = [
   { path: '/', redirect: '/todos' },
   { path: '/todos', component: Todos, name: 'todos'},
   { path: '/todos/:id', component: Todos, name: 'todo-details'},
-  { path: '/login', component: Login, name: 'login' }
+  { path: '/login', component: Login, name: 'login' },
+
 ]
 
 const router = new VueRouter({

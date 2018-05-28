@@ -2,8 +2,10 @@
   <div>
     <div class="card">
       <ul class="list-group list-group-flush" v-if="todo">
-        <li class="list-group-item"><i class="fas fa-user fa-fw"></i> {{ todo.title }} </li>
-        <li class="list-group-item"><i class="fas fa-envelope fa-fw"></i> Priority:{{ todo.priority }}</li>       
+        <li class="list-group-item"> {{ todo.title }} </li>
+        <li class="list-group-item">  Priority:
+           <b-form-select v-model="todo.priority" :options="options" class="mb-3" />
+        </li>       
         <li class="list-group-item">
                 <b-form-checkbox id="checkbox1"
                                 input type="checkbox"
@@ -27,10 +29,15 @@
 import { todosService } from '../services/TodosService'
 export default {
  
-  props: ['todo'],
+   props: ['todo'],
 
   data() {
     return {
+      options: [
+        { value: 'low', text: 'low' },
+        { value: 'normal', text: 'normal' },
+        { value: 'high', text: 'high' }
+      ]
     
     }
   },

@@ -6,7 +6,7 @@
         <TodoList :todos="todos"/>
       </div>
       <div class="col-6">
-        <TodoDetails :todo="routeTodo" @todoDeleted="deleteTodo" />
+        <TodoDetails :todo="routeTodo" @todoDeleted="deleteTodo" @todoEdited="editTodo"/>
       </div>
     </div>
   </div>
@@ -20,7 +20,6 @@ import AddTodo from'../pages/AddTodo.vue'
 
 
 export default {
-
   components: {
      TodoList,
      TodoDetails,
@@ -28,10 +27,9 @@ export default {
   },
   
   data() {
+
     return {
-      todo: { 
-          title:''
-      },
+      todo: {},
       todos: []
     }
   },
@@ -51,18 +49,25 @@ export default {
       let index = this.todos.findIndex(todo => todo.id === id)
       this.todos.splice(index, 1)
     },
-  
-    addTodo(todo) {
-        this.todos.push(todo)       
-    }
-    
-  },
    
+    addTodo(todo) {
+      todosService.getAll()
+        .then((response) => {
+            this.todos = response.data
+          })
+    },
+      editTodo(todo) {
+       
+    }
+  },
+ 
 
   computed: {
     routeTodo() {
       return this.todos.find(todo => todo.id == this.$route.params.id)
     }
-  }
+  },
+
+
 }
 </script>
