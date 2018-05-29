@@ -5,7 +5,7 @@
           <router-link class="nav-item nav-link" to="/todos">Todo list</router-link>
           <router-link class="nav-item nav-link" to="/add-todo">Add Todo</router-link>     
           <router-link class="nav-item nav-link" to="/login"> Login </router-link>        
-          <a class="nav-item nav-link" href="#" @click="logout">Logout </a>   
+          <a class="nav-item nav-link" href="#"  @click="logout">Logout </a>   
         </b-navbar-nav>
     </b-navbar>
   </div>
