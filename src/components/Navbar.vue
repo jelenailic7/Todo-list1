@@ -1,10 +1,11 @@
 <template>
   <div>
-    <b-navbar type="dark" variant="primary">
+    <b-navbar toggleable="md" type="dark" variant="info">
         <b-navbar-nav>
-          <b-nav-item href="/todos" v-if="isAuthenticated">Todo list</b-nav-item>
-          <b-nav-item href="/login" v-if="!isAuthenticated">Login</b-nav-item>
-          <b-nav-item href="#" @click="logout" v-if="isAuthenticated">Logout</b-nav-item>
+          <router-link class="nav-item nav-link" to="/todos">Todo list</router-link>
+          <router-link class="nav-item nav-link" to="/add-todo">Add Todo</router-link>     
+          <router-link class="nav-item nav-link" to="/login"> Login </router-link>        
+          <a class="nav-item nav-link" href="#" @click="logout">Logout </a>   
         </b-navbar-nav>
     </b-navbar>
   </div>
@@ -23,8 +24,7 @@
       logout() {
         authService.logout()
          this.isAuthenticated = false
-        this.$router.push({ name: 'login' })
-
+          this.$router.push({ name: 'login' })
       }
     }
   }

@@ -5,18 +5,18 @@ import BootstrapVue from 'bootstrap-vue'
 import Todos from './pages/Todos.vue'
 import TodoDetails  from './components/TodoDetails.vue'
 import Login from './pages/Login.vue'
-import MyDirectives from './plugins/MyDirectives';
-
+import MyDirectives from './plugins/MyDirectives'
+import AddTodo from './pages/AddTodo.vue'
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
-// Vue.use(MyDirective)
 
 const routes = [
   { path: '/', redirect: '/todos' },
   { path: '/todos', component: Todos, name: 'todos'},
   { path: '/todos/:id', component: Todos, name: 'todo-details'},
+  { path: '/add-todo', component: AddTodo, name: 'add-todo' },
   { path: '/login', component: Login, name: 'login' },
 
 ]

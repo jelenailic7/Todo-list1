@@ -15,6 +15,7 @@ export default class AuthService {
     axios.defaults.headers.common['Authorization'] = `Bearer ${TOKEN}`
   }
 
+
   logout() {
     window.localStorage.removeItem('loginToken')
     delete axios.defaults.headers.common['Authorization']

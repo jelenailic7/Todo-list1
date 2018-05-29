@@ -2,11 +2,10 @@
   <div class="container mt-4">
     <div class="row">
       <div class="col-6">
-        <AddTodo @todoAdded="addTodo"/>
         <TodoList :todos="todos"/>
       </div>
       <div class="col-6">
-        <TodoDetails :todo="routeTodo" @todoDeleted="deleteTodo" @todoEdited="editTodo"/>
+        <TodoDetails :todo="routeTodo" @todoDeleted="deleteTodo"/>
       </div>
     </div>
   </div>
@@ -27,7 +26,6 @@ export default {
   },
   
   data() {
-
     return {
       todo: {},
       todos: []
@@ -43,31 +41,17 @@ export default {
       })
   },
 
-
   methods: {
     deleteTodo (id) {
       let index = this.todos.findIndex(todo => todo.id === id)
       this.todos.splice(index, 1)
+      }
     },
-   
-    addTodo(todo) {
-      todosService.getAll()
-        .then((response) => {
-            this.todos = response.data
-          })
-    },
-      editTodo(todo) {
-       
-    }
-  },
- 
 
   computed: {
     routeTodo() {
       return this.todos.find(todo => todo.id == this.$route.params.id)
     }
-  },
-
-
+  } 
 }
 </script>

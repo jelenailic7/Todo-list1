@@ -19,8 +19,10 @@ export default class TodosService {
   }
 
   edit (todo) {
+    console.log(todo)
     return axios.put(`todos/${todo.id}`, todo)
   }
+
   get (id) {
     return axios.get(`todos/${id}`)
 }
